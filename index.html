@@ -55,7 +55,7 @@
     <script>
       setInterval(() => {
         document.querySelector(".messageBody").style.height =
-          screen.height / 16.00020157734 - 8 + "pc";
+          window.innerHeight / 16.00020157734 - 8 + "pc";
         if (document.querySelector(".textField").value.trim() != "")
           document.querySelector(".sendBtn").style.filter = "opacity(1)";
         else document.querySelector(".sendBtn").style.filter = "opacity(0)";
