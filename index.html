@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Converse App</title>
+    <link rel="stylesheet" href="./header.css" />
+    <link rel="stylesheet" href="./footer.css" />
+    <link rel="stylesheet" href="./messageBody.css" />
+    <link rel="stylesheet" href="./body.css" />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+  </head>
+
+  <body>
+    <div class="header">
+      <div class="opponentUserMiniData">
+        <button class="backBtn">
+          <img
+            style="height: 45px;"
+            src="https://static.thenounproject.com/png/1410611-200.png"
+          />
+        </button>
+        <div class="profileImgContainer">
+          <img
+            src="https://instagram.fccu3-1.fna.fbcdn.net/v/t51.2885-19/s150x150/92713195_2683631008590558_866691208825536512_n.jpg?_nc_ht=instagram.fccu3-1.fna.fbcdn.net&_nc_ohc=uGo9sNoVMS4AX-uQYFf&oh=aacd206db932c11af92fdde5a3a3dc3b&oe=5EC57E65"
+            class="profileImg"
+          />
+        </div>
+        <div class="name">Rohan Jaiswal</div>
+      </div>
+    </div>
+    <div class="messageBody"></div>
+    <div class="footer">
+      <input type="text" class="textField" placeholder="Message..." />
+      <button
+        class="sendBtn"
+        onclick="
+      clearInterval(textUpdater);sendTxt();"
+      >
+        SEND
+      </button>
+    </div>
+    <script src="https://www.gstatic.com/firebasejs/7.13.1/firebase.js"></script>
+    <script>
+      var firebaseConfig = {
+        apiKey: "AIzaSyBSO1l02gRubi7mZnIWhkxMcuXE-oMu33g",
+        authDomain: "converse-dd75d.firebaseapp.com",
+        databaseURL: "https://converse-dd75d.firebaseio.com",
+        projectId: "converse-dd75d",
+        storageBucket: "converse-dd75d.appspot.com",
+        messagingSenderId: "984079997699",
+      };
+      firebase.initializeApp(firebaseConfig);
+    </script>
+    <script>
+      setInterval(() => {
+        document.querySelector(".messageBody").style.height =
+          screen.height / 16.00020157734 - 8 + "pc";
+        if (document.querySelector(".textField").value.trim() != "")
+          document.querySelector(".sendBtn").style.filter = "opacity(1)";
+        else document.querySelector(".sendBtn").style.filter = "opacity(0)";
+        document.querySelector(".textField").style.width =
+          screen.width / 16.00020157734 - 7 + "pc";
+      }, 50);
+    </script>
+    <script src="app.js"></script>
+  </body>
+</html>
