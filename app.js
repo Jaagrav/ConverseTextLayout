@@ -1,13 +1,13 @@
-var myIP = "jaagrav",
-  textUpdater;
+var myIP = "jaagrav";
 window.onload = function () {
   getIP();
   function getIP() {
     $.getJSON("https://jsonip.com?callback=?", function (data) {
       myIP = data.ip;
     });
-    textUpdater = setInterval(updateTexts, 10);
   }
+
+  setInterval(updateTexts, 250);
 };
 function sendTxt() {
   var firebaseref = firebase.database().ref();
@@ -20,6 +20,7 @@ function sendTxt() {
   }
 }
 function updateTexts() {
+  console.log("updating...");
   var api = "https://converse-dd75d.firebaseio.com/texts.json";
   $.getJSON(api, response);
   function response(data) {
