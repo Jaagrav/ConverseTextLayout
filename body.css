@@ -1,6 +1,8 @@
 body {
   padding: 0;
   margin: 0;
-  background: url("https://source.unsplash.com/1000x2000/?macro");
+  background: url("https://source.unsplash.com/1000x2000/?colorful bokeh");
+  background-size: auto 130%;
+  background-repeat: no-repeat;
   background-position: center;
 }
