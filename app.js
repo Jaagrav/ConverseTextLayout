@@ -1,27 +1,31 @@
-var myIP = "jaagrav";
+var myIP = prompt("Enter email").replace("@", "-").replace(".", "-"),
+  theirIP = prompt("Enter your friend's email")
+    .replace("@", "-")
+    .replace(".", "-");
 window.onload = function () {
-  getIP();
-  function getIP() {
-    $.getJSON("https://jsonip.com?callback=?", function (data) {
-      myIP = data.ip;
-    });
-  }
-
   setInterval(updateTexts, 250);
 };
+
+var IP = [myIP, theirIP];
+IP.sort();
+var IPs = IP[0] + IP[1];
+
 function sendTxt() {
   var firebaseref = firebase.database().ref();
   if (document.querySelector(".textField").value.trim()) {
-    var task = firebaseref.child("texts").push({
-      user: myIP,
-      message: document.querySelector(".textField").value.trim(),
-    });
+    console.log(IPs);
+    var task = firebaseref
+      .child("texts")
+      .child(IPs.replace("@", "-").replace(".", "-"))
+      .push({
+        user: myIP,
+        message: document.querySelector(".textField").value.trim(),
+      });
     document.querySelector(".textField").value = "";
   }
 }
 function updateTexts() {
-  console.log("updating...");
-  var api = "https://converse-dd75d.firebaseio.com/texts.json";
+  var api = "https://converse-dd75d.firebaseio.com/texts/" + IPs + ".json";
   $.getJSON(api, response);
   function response(data) {
     var messageArray = [],
@@ -44,5 +48,12 @@ function updateTexts() {
           '</div><div class="triangleTT"></div></div>';
       }
     }
+  }
+}
+function resetPosition() {
+  var current = document.querySelector(".messageBody");
+  if (current.scrollTop > current.scrollHeight - current.clientHeight - 5) {
+    console.log("damn!");
+    current.scrollTo(0, current.scrollHeight - current.clientHeight);
   }
 }
