@@ -32,11 +32,7 @@
     <div class="messageBody"></div>
     <div class="footer">
       <input type="text" class="textField" placeholder="Message..." />
-      <button
-        class="sendBtn"
-        onclick="
-      clearInterval(textUpdater);sendTxt();"
-      >
+      <button class="sendBtn" onclick="sendTxt();">
         SEND
       </button>
     </div>
@@ -55,7 +51,7 @@
     <script>
       setInterval(() => {
         document.querySelector(".messageBody").style.height =
-          window.innerHeight / 16.00020157734 - 8 + "pc";
+          screen.height / 16.00020157734 - 8 + "pc";
         if (document.querySelector(".textField").value.trim() != "")
           document.querySelector(".sendBtn").style.filter = "opacity(1)";
         else document.querySelector(".sendBtn").style.filter = "opacity(0)";
