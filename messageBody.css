@@ -45,11 +45,17 @@
   padding: 20px;
   z-index: -5;
   max-width: 10pc;
-  background: linear-gradient(90deg, rgb(91, 155, 250), rgb(122, 27, 212));
+  background: linear-gradient(
+    35deg,
+    rgb(91, 155, 250),
+    rgb(91, 155, 250),
+    rgb(122, 27, 212)
+  );
   display: inline-flex;
   margin-right: auto;
   margin-left: 25px;
   left: 0;
+  color: rgb(255, 255, 255);
 }
 .triangleMT {
   position: absolute;
