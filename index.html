@@ -3,18 +3,442 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Converse App</title>
-    <link rel="stylesheet" href="./header.css" />
-    <link rel="stylesheet" href="./footer.css" />
-    <link rel="stylesheet" href="./messageBody.css" />
-    <link rel="stylesheet" href="./body.css" />
+    <title>Converse</title>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-  </head>
+    <style>
+      @import url("https://fonts.googleapis.com/css2?family=Baloo+Thambi+2&display=swap");
+      @import url("https://fonts.googleapis.com/css2?family=Montserrat&display=swap");
+      @import url("https://fonts.googleapis.com/css2?family=Baloo+Thambi+2&display=swap");
+      body {
+        padding: 0;
+        margin: 0;
+        background: url("https://source.unsplash.com/1000x2000/?colorful bokeh");
+        background-repeat: no-repeat;
+        background-position: center;
+      }
 
+      .messageBody {
+        position: relative;
+        flex: 1 1 auto;
+        height: 10pc;
+        min-height: 0;
+        min-width: 0;
+        -webkit-box-align: stretch;
+        -webkit-box-pack: end;
+        justify-content: flex-end;
+        overflow-x: hidden;
+        overflow-y: auto;
+        top: -35px;
+      }
+      .textHolder {
+        position: relative;
+        width: 100%;
+        margin: auto;
+        right: 0;
+        left: 0;
+        height: fit-content;
+        color: white;
+        padding-bottom: 10px;
+        display: inline-flex;
+        font-family: "Baloo Thambi 2", cursive;
+      }
+      .myText {
+        position: relative;
+        height: fit-content;
+        width: fit-content;
+        max-width: 10pc;
+        padding: 20px;
+        background: rgb(233, 233, 233);
+        display: inline-flex;
+        margin-left: auto;
+        margin-right: 25px;
+        right: 0;
+        z-index: -5;
+        color: black;
+      }
+      .theirText {
+        position: relative;
+        height: fit-content;
+        width: fit-content;
+        padding: 20px;
+        z-index: -5;
+        max-width: 10pc;
+        background: linear-gradient(
+          35deg,
+          rgb(91, 155, 250),
+          rgb(91, 155, 250),
+          rgb(122, 27, 212)
+        );
+        display: inline-flex;
+        margin-right: auto;
+        margin-left: 25px;
+        left: 0;
+        color: rgb(255, 255, 255);
+      }
+      .triangleMT {
+        position: absolute;
+        width: 0;
+        height: 0;
+        border-top: 10px solid transparent;
+        border-bottom: 10px solid transparent;
+        border-left: 20px solid rgb(233, 233, 233);
+        margin: auto;
+        bottom: 20px;
+        right: 12px;
+        z-index: -6;
+      }
+      .triangleTT {
+        position: absolute;
+        width: 0;
+        height: 0;
+        border-top: 10px solid transparent;
+        border-bottom: 10px solid transparent;
+        border-left: 20px solid rgb(91, 155, 250);
+        margin: auto;
+        bottom: 20px;
+        left: 11px;
+        z-index: -6;
+        transform: rotate(-180deg);
+      }
+
+      .header {
+        position: relative;
+        height: 5pc;
+        width: 100%;
+        background: linear-gradient(
+          90deg,
+          rgb(91, 155, 250),
+          rgb(122, 27, 212)
+        );
+        margin: auto;
+        top: 0;
+        right: 0;
+        left: 0;
+        border-radius: 0 0 50% 50%;
+      }
+      .opponentUserMiniData {
+        height: 100%;
+        width: 225px;
+        position: absolute;
+        margin: auto;
+        top: 0;
+        bottom: 0;
+        right: 0;
+        left: 0;
+      }
+      .backBtn {
+        position: absolute;
+        background: transparent;
+        height: 40px;
+        outline: none;
+        border: none;
+        filter: invert(1);
+        margin: auto;
+        left: 25px;
+        top: 0;
+        bottom: 10px;
+      }
+      .profileImgContainer {
+        position: absolute;
+        margin: auto;
+        right: 0;
+        left: 0;
+        top: 0;
+        bottom: 0;
+        border-radius: 50%;
+        height: 55px;
+        width: 55px;
+        overflow: hidden;
+        border: 4px solid rgb(8, 255, 131);
+        box-shadow: 0 0 10px rgb(8, 255, 131);
+      }
+      .profileImg {
+        position: absolute;
+        margin: auto;
+        bottom: 0;
+        right: 0;
+        left: 0;
+        top: 0;
+        border-radius: 50%;
+        height: 88%;
+      }
+      .header .name {
+        color: white;
+        position: absolute;
+        height: fit-content;
+        width: fit-content;
+        max-width: 70px;
+        margin: auto;
+        top: 0;
+        bottom: 0;
+        left: 160px;
+        font-size: 20px;
+        font-family: "Baloo Thambi 2", cursive;
+        text-align: left;
+        line-height: 20px;
+        word-wrap: normal;
+      }
+      .footer {
+        position: absolute;
+        margin: auto;
+        bottom: 0;
+        right: 0;
+        left: 0;
+        height: 5pc;
+        width: 100%;
+        max-height: 88px;
+      }
+      .textField {
+        position: absolute;
+        height: 10%;
+        width: 20pc;
+        resize: none;
+        border-radius: 35px;
+        border: none;
+        padding: 20px;
+        bottom: 18px;
+        margin: auto;
+        right: 0;
+        left: 0;
+        color: white;
+        font-size: 20px;
+        outline: none;
+        background: transparent;
+        border: 1px solid rgb(255, 255, 255);
+        backdrop-filter: blur(20px);
+        font-family: "Baloo Thambi 2", cursive;
+        padding-right: 60px;
+      }
+      .textField::placeholder {
+        color: white;
+      }
+      .sendBtn {
+        position: absolute;
+        margin: auto;
+        height: fit-content;
+        width: fit-content;
+        top: 0;
+        bottom: 7px;
+        background: transparent;
+        border: none;
+        outline: none;
+        color: white;
+        right: 25px;
+        transition: 0.4s;
+      }
+      .joiningPage {
+        position: absolute;
+        height: 100%;
+        width: 100%;
+        margin: auto;
+        top: 0;
+        right: 0;
+        left: 0;
+        bottom: 0;
+        background: linear-gradient(
+          90deg,
+          rgb(91, 155, 250),
+          rgb(122, 27, 212)
+        );
+        z-index: +5;
+        transition: 1s;
+      }
+      .appName {
+        height: fit-content;
+        width: fit-content;
+        position: absolute;
+        font-size: 80px;
+        margin: auto;
+        right: 0;
+        left: 0;
+        color: rgb(0, 0, 0);
+        font-family: "Baloo Thambi 2", cursive;
+      }
+      .joinForm {
+        position: absolute;
+        height: 20pc;
+        width: 90%;
+        margin: auto;
+        top: 0;
+        right: 0;
+        left: 0;
+        bottom: 0;
+      }
+      .inputUserName,
+      .inputUserSLID {
+        position: relative;
+        height: 20px;
+        width: 80%;
+        font-family: "Baloo Thambi 2", cursive;
+        margin: auto;
+        right: 0;
+        left: 0;
+        padding: 20px;
+        margin-bottom: 30px;
+        font-size: 25px;
+        border: 0;
+        border-radius: 50px;
+        outline: none;
+      }
+      .submitBtn {
+        position: relative;
+        height: fit-content;
+        width: 100px;
+        margin: auto;
+        font-family: "Baloo Thambi 2", cursive;
+        right: 0;
+        left: 0;
+        background: teal;
+        border: 0;
+        border-radius: 50px;
+        font-size: 50px;
+        outline: none;
+      }
+      .homePage {
+        position: absolute;
+        height: 100%;
+        width: 100%;
+        margin: auto;
+        top: 0;
+        right: 0;
+        left: 0;
+        bottom: 0;
+        background: #111;
+        z-index: +3;
+        transition: 1s;
+      }
+      .myProfileShow {
+        position: relative;
+        margin: auto 0;
+        height: 15pc;
+        width: 100%;
+      }
+      .userNameShow {
+        position: absolute;
+        height: fit-content;
+        width: fit-content;
+        margin: auto;
+        max-width: 200px;
+        top: 0;
+        bottom: 0;
+        left: 15px;
+        color: white;
+        font-size: 60px;
+        font-family: "Baloo Thambi 2", cursive;
+        line-height: 55px;
+      }
+      .proPic {
+        position: absolute;
+        height: 150px;
+        margin: auto;
+        top: 0;
+        border-radius: 50%;
+        bottom: 0;
+        right: 25px;
+      }
+      .chats {
+        position: relative;
+        height: 43.8pc;
+        width: 100%;
+        margin: auto;
+        right: 0;
+        left: 0;
+        background: linear-gradient(
+          90deg,
+          rgb(91, 155, 250),
+          rgb(122, 27, 212)
+        );
+        border-radius: 100px 0 0 0;
+      }
+      .chatsContainer {
+        position: absolute;
+        height: 90%;
+        width: 90%;
+        margin: auto;
+        bottom: 0;
+        right: 0;
+        left: 0;
+        overflow-x: hidden;
+        overflow-y: auto;
+      }
+      .chat {
+        position: relative;
+        height: 120px;
+        width: 90%;
+        margin: auto;
+        right: 0;
+        left: 0;
+        border-radius: 70px;
+        background: #111;
+        margin-bottom: 10px;
+      }
+      .chatProPic {
+        position: absolute;
+        height: 90px;
+        margin: auto;
+        top: 0;
+        bottom: 0;
+        left: 10px;
+        border-radius: 50%;
+      }
+      .chatName {
+        position: absolute;
+        height: fit-content;
+        width: fit-content;
+        margin: auto;
+        top: 0;
+        bottom: 0;
+        font-size: 30px;
+        right: 30px;
+        color: white;
+        font-family: "Baloo Thambi 2", cursive;
+      }
+    </style>
+  </head>
   <body>
+    <div class="joiningPage">
+      <h1 class="appName">Converse</h1>
+      <form class="joinForm">
+        <center>
+          <input
+            type="text"
+            class="inputUserName"
+            placeholder="What's your name?"
+            required
+          />
+          <input
+            type="text"
+            class="inputUserSLID"
+            placeholder="Your SoloLearn account link"
+            required
+          />
+          <button class="submitBtn">Go</button>
+        </center>
+      </form>
+    </div>
+    <div class="homePage">
+      <div class="myProfileShow">
+        <h1 class="userNameShow">Hi, Jaagrav</h1>
+        <img
+          src="https://api.sololearn.com/Uploads/Avatars/11500335.jpg"
+          class="proPic"
+        />
+      </div>
+      <div class="chats">
+        <div class="chatsContainer">
+          <div class="chat">
+            <img
+              src="https://api.sololearn.com/Uploads/Avatars/11500335.jpg"
+              class="chatProPic"
+            />
+            <h2 class="chatName">Jaagrav</h2>
+          </div>
+        </div>
+      </div>
+    </div>
     <div class="header">
       <div class="opponentUserMiniData">
-        <button class="backBtn">
+        <button class="backBtn" onclick="backToHome()">
           <img
             style="height: 45px;"
             src="https://static.thenounproject.com/png/1410611-200.png"
@@ -22,11 +446,11 @@
         </button>
         <div class="profileImgContainer">
           <img
-            src="https://instagram.fccu3-1.fna.fbcdn.net/v/t51.2885-19/s150x150/92713195_2683631008590558_866691208825536512_n.jpg?_nc_ht=instagram.fccu3-1.fna.fbcdn.net&_nc_ohc=uGo9sNoVMS4AX-uQYFf&oh=aacd206db932c11af92fdde5a3a3dc3b&oe=5EC57E65"
+            src="https://source.unsplash.com/50x50/?flowers,nature,people"
             class="profileImg"
           />
         </div>
-        <div class="name">Rohan Jaiswal</div>
+        <div class="name">Coder</div>
       </div>
     </div>
     <div class="messageBody"></div>
@@ -36,7 +460,7 @@
         SEND
       </button>
     </div>
-    <script src="https://www.gstatic.com/firebasejs/7.13.1/firebase.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.14.1/firebase.js"></script>
     <script>
       var firebaseConfig = {
         apiKey: "AIzaSyBSO1l02gRubi7mZnIWhkxMcuXE-oMu33g",
@@ -49,6 +473,7 @@
       firebase.initializeApp(firebaseConfig);
     </script>
     <script>
+      var ID = "";
       setInterval(() => {
         document.querySelector(".messageBody").style.height =
           window.innerHeight / 16.00020157734 - 8 + "pc";
@@ -57,8 +482,137 @@
         else document.querySelector(".sendBtn").style.filter = "opacity(0)";
         document.querySelector(".textField").style.width =
           screen.width / 16.00020157734 - 7 + "pc";
+        document.querySelector(".chats").style.height =
+          window.innerHeight / 16.00020157734 - 15 + "pc";
       }, 50);
+      document
+        .querySelector(".submitBtn")
+        .addEventListener("click", function (e) {
+          e.preventDefault();
+          var firebaseref = firebase.database().ref();
+          if (
+            document.querySelector(".inputUserName").value.trim() != "" &&
+            document.querySelector(".inputUserSLID").value.trim() != ""
+          ) {
+            for (
+              var i = 0;
+              i < document.querySelector(".inputUserSLID").value.trim().length;
+              i++
+            ) {
+              var s = document
+                .querySelector(".inputUserSLID")
+                .value.trim()
+                .charAt(i);
+              if (
+                s == "1" ||
+                s == "2" ||
+                s == "3" ||
+                s == "4" ||
+                s == "5" ||
+                s == "6" ||
+                s == "7" ||
+                s == "8" ||
+                s == "9" ||
+                s == "0"
+              )
+                ID += document
+                  .querySelector(".inputUserSLID")
+                  .value.trim()
+                  .charAt(i);
+            }
+
+            console.log(ID);
+            firebaseref
+              .child("users")
+              .child(ID)
+              .set(document.querySelector(".inputUserName").value.trim());
+            document.querySelector(".userNameShow").innerHTML =
+              "Hi, " + document.querySelector(".inputUserName").value;
+            document.querySelector(".proPic").src =
+              "https://api.sololearn.com/Uploads/Avatars/" + ID + ".jpg";
+            document.querySelector(".joiningPage").style.filter = "opacity(0)";
+            setTimeout(() => {
+              document.querySelector(".joiningPage").style.zIndex = "-10";
+            }, 1000);
+
+            setInterval(function () {
+              $.getJSON(
+                "https://converse-dd75d.firebaseio.com/users.json",
+                updateChats
+              );
+            }, 1000);
+          }
+        });
+      function updateChats(data) {
+        document.querySelector(".chatsContainer").innerHTML = "";
+        for (var i in data) {
+          if (i != ID)
+            document.querySelector(".chatsContainer").innerHTML +=
+              '<div class="chat" onclick=openChatWindow("' +
+              i +
+              '","' +
+              data[i] +
+              '")><img src="https://api.sololearn.com/Uploads/Avatars/' +
+              i +
+              '.jpg" class="chatProPic"/><h2 class="chatName">' +
+              data[i] +
+              "</h2></div>";
+        }
+      }
+      var theirID = "",
+        textUpdateInterval;
+      var IDs = "";
+      function openChatWindow(opponentID, opponentName) {
+        console.log(opponentName + ":" + opponentID);
+        theirID = opponentID;
+        document.querySelector(".name").innerHTML = opponentName;
+        document.querySelector(".profileImg").src =
+          "https://api.sololearn.com/Uploads/Avatars/" + opponentID + ".jpg";
+        document.querySelector(".homePage").style.filter = "opacity(0)";
+        setTimeout(() => {
+          document.querySelector(".homePage").style.zIndex = "-2";
+        }, 1000);
+        IDs = parseInt(ID) < parseInt(theirID) ? ID + theirID : theirID + ID;
+        textUpdateInterval = setInterval(function () {
+          $.getJSON(
+            "https://converse-dd75d.firebaseio.com/texts/" + IDs + ".json",
+            callback
+          );
+          console.log(IDs);
+        }, 500);
+      }
+      function sendTxt() {
+        var firebaseref = firebase.database().ref();
+        firebaseref
+          .child("texts")
+          .child(IDs)
+          .push({
+            id: ID,
+            text: document.querySelector(".textField").value.trim(),
+          });
+        document.querySelector(".textField").value = "";
+      }
+      function callback(response) {
+        console.log(response);
+        document.querySelector(".messageBody").innerHTML = "<br><br><br>";
+        for (var i in response) {
+          if (response[i].id == ID)
+            document.querySelector(".messageBody").innerHTML +=
+              "<div class='textHolder'><div class='myText'>" +
+              response[i].text +
+              "</div><div class='triangleMT'></div></div>";
+          else
+            document.querySelector(".messageBody").innerHTML +=
+              "<div class='textHolder'><div class='theirText'>" +
+              response[i].text +
+              "</div><div class='triangleTT'></div></div>";
+        }
+      }
+      function backToHome() {
+        document.querySelector(".homePage").style.zIndex = "+6";
+        document.querySelector(".homePage").style.filter = "opacity(1)";
+        clearInterval(textUpdateInterval);
+      }
     </script>
-    <script src="app.js"></script>
   </body>
 </html>
