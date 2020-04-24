@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Converse</title>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <!--https://source.unsplash.com/1000x2000/?colorful bokeh-->
     <style>
       @import url("https://fonts.googleapis.com/css2?family=Baloo+Thambi+2&display=swap");
       @import url("https://fonts.googleapis.com/css2?family=Montserrat&display=swap");
@@ -12,7 +13,7 @@
       body {
         padding: 0;
         margin: 0;
-        background: url("https://source.unsplash.com/1000x2000/?colorful bokeh");
+        background: url("https://images.unsplash.com/photo-1518123877527-f4255b0c7795?crop=entropy&cs=tinysrgb&fit=crop&fm=jpg&h=2000&ixid=eyJhcHBfaWQiOjF9&ixlib=rb-1.2.1&q=80&w=1000");
         background-repeat: no-repeat;
         background-position: center;
       }
@@ -28,7 +29,6 @@
         justify-content: flex-end;
         overflow-x: hidden;
         overflow-y: auto;
-        top: -35px;
       }
       .textHolder {
         position: relative;
@@ -46,23 +46,25 @@
         position: relative;
         height: fit-content;
         width: fit-content;
-        max-width: 10pc;
-        padding: 20px;
+        max-width: 15pc;
+        min-width: 5pc;
+        padding: 15px;
         background: rgb(233, 233, 233);
         display: inline-flex;
         margin-left: auto;
-        margin-right: 25px;
         right: 0;
         z-index: -5;
+        border-radius: 35px 0 0 35px;
         color: black;
       }
       .theirText {
         position: relative;
         height: fit-content;
         width: fit-content;
-        padding: 20px;
+        max-width: 15pc;
+        min-width: 5pc;
+        padding: 15px;
         z-index: -5;
-        max-width: 10pc;
         background: linear-gradient(
           35deg,
           rgb(91, 155, 250),
@@ -71,54 +73,56 @@
         );
         display: inline-flex;
         margin-right: auto;
-        margin-left: 25px;
         left: 0;
+        min-width: 5pc;
         color: rgb(255, 255, 255);
+        border-radius: 0 35px 35px 0;
       }
-      .triangleMT {
-        position: absolute;
-        width: 0;
-        height: 0;
-        border-top: 10px solid transparent;
-        border-bottom: 10px solid transparent;
-        border-left: 20px solid rgb(233, 233, 233);
+      .myMyText {
+        position: relative;
+        height: 100%;
+        width: fit-content;
+        margin-left: auto;
+        right: 0;
         margin: auto;
-        bottom: 20px;
-        right: 12px;
-        z-index: -6;
       }
-      .triangleTT {
-        position: absolute;
-        width: 0;
-        height: 0;
-        border-top: 10px solid transparent;
-        border-bottom: 10px solid transparent;
-        border-left: 20px solid rgb(91, 155, 250);
+      .theirTheirText {
+        position: relative;
+        height: 100%;
+        width: fit-content;
+        margin-right: auto;
+        left: 0;
         margin: auto;
-        bottom: 20px;
-        left: 11px;
-        z-index: -6;
-        transform: rotate(-180deg);
       }
-
+      .myTextImg {
+        position: relative;
+        height: 45px;
+        border-radius: 50%;
+        margin-right: 10px;
+        margin-top: auto;
+        bottom: 0;
+      }
+      .theirTextImg {
+        position: relative;
+        height: 45px;
+        border-radius: 50%;
+        margin-left: 10px;
+        margin-top: auto;
+        bottom: 0;
+      }
       .header {
         position: relative;
-        height: 5pc;
+        height: 6pc;
         width: 100%;
-        background: linear-gradient(
-          90deg,
-          rgb(91, 155, 250),
-          rgb(122, 27, 212)
-        );
+        background: transparent;
         margin: auto;
         top: 0;
         right: 0;
         left: 0;
-        border-radius: 0 0 50% 50%;
       }
       .opponentUserMiniData {
         height: 100%;
-        width: 225px;
+        width: 100%;
         position: absolute;
         margin: auto;
         top: 0;
@@ -129,22 +133,20 @@
       .backBtn {
         position: absolute;
         background: transparent;
-        height: 40px;
+        height: 30px;
         outline: none;
         border: none;
         filter: invert(1);
         margin: auto;
-        left: 25px;
-        top: 0;
-        bottom: 10px;
-      }
-      .profileImgContainer {
-        position: absolute;
-        margin: auto;
-        right: 0;
-        left: 0;
+        left: 15px;
         top: 0;
         bottom: 0;
+      }
+      .profileImgContainer {
+        position: relative;
+        margin: 10px;
+        margin-left: auto;
+        right: 0;
         border-radius: 50%;
         height: 55px;
         width: 55px;
@@ -164,17 +166,15 @@
       }
       .header .name {
         color: white;
-        position: absolute;
+        position: relative;
         height: fit-content;
-        width: fit-content;
-        max-width: 70px;
-        margin: auto;
-        top: 0;
-        bottom: 0;
-        left: 160px;
-        font-size: 20px;
+        width: 250px;
+        margin-left: auto;
+        right: 85px;
+        top: -50px;
+        font-size: 25px;
         font-family: "Baloo Thambi 2", cursive;
-        text-align: left;
+        text-align: right;
         line-height: 20px;
         word-wrap: normal;
       }
@@ -312,16 +312,17 @@
         margin: auto 0;
         height: 15pc;
         width: 100%;
+        background: url("https://source.unsplash.com/400x400/?colorful bokeh");
+        border-radius: 0 0 50px 50px;
       }
       .userNameShow {
         position: absolute;
         height: fit-content;
         width: fit-content;
         margin: auto;
-        max-width: 200px;
-        top: 0;
-        bottom: 0;
-        left: 15px;
+        right: 0;
+        bottom: 10px;
+        left: 0;
         color: white;
         font-size: 60px;
         font-family: "Baloo Thambi 2", cursive;
@@ -331,10 +332,10 @@
         position: absolute;
         height: 150px;
         margin: auto;
-        top: 0;
+        top: 20px;
         border-radius: 50%;
-        bottom: 0;
-        right: 25px;
+        right: 0;
+        left: 0;
       }
       .chats {
         position: relative;
@@ -343,16 +344,12 @@
         margin: auto;
         right: 0;
         left: 0;
-        background: linear-gradient(
-          90deg,
-          rgb(91, 155, 250),
-          rgb(122, 27, 212)
-        );
+        background: transparent;
         border-radius: 100px 0 0 0;
       }
       .chatsContainer {
         position: absolute;
-        height: 90%;
+        height: 100%;
         width: 90%;
         margin: auto;
         bottom: 0;
@@ -368,7 +365,7 @@
         margin: auto;
         right: 0;
         left: 0;
-        border-radius: 70px;
+        border-bottom: 2px solid #333;
         background: #111;
         margin-bottom: 10px;
       }
@@ -418,9 +415,9 @@
     </div>
     <div class="homePage">
       <div class="myProfileShow">
-        <h1 class="userNameShow">Hi, Jaagrav</h1>
+        <h1 class="userNameShow">Jaagrav</h1>
         <img
-          src="https://api.sololearn.com/Uploads/Avatars/11500335.jpg"
+          src="https://instagram.fccu3-1.fna.fbcdn.net/v/t51.2885-19/s320x320/93816637_3160050547352339_7564488790480257024_n.jpg?_nc_ht=instagram.fccu3-1.fna.fbcdn.net&_nc_ohc=QbitMOoV-YgAX81ZKKe&oh=3416539fabc0837bedf8fba6ddb3ef48&oe=5ECE7B13"
           class="proPic"
         />
       </div>
@@ -440,8 +437,8 @@
       <div class="opponentUserMiniData">
         <button class="backBtn" onclick="backToHome()">
           <img
-            style="height: 45px;"
-            src="https://static.thenounproject.com/png/1410611-200.png"
+            style="height: 25px;"
+            src="https://cdn.onlinewebfonts.com/svg/img_414032.png"
           />
         </button>
         <div class="profileImgContainer">
@@ -450,10 +447,33 @@
             class="profileImg"
           />
         </div>
-        <div class="name">Coder</div>
+        <div class="name">Parth Saini</div>
       </div>
     </div>
-    <div class="messageBody"></div>
+    <div class="messageBody">
+      <div class="textHolder">
+        <div class="myText">
+          <img
+            src="https://instagram.fccu3-1.fna.fbcdn.net/v/t51.2885-19/s320x320/93816637_3160050547352339_7564488790480257024_n.jpg?_nc_ht=instagram.fccu3-1.fna.fbcdn.net&_nc_ohc=QbitMOoV-YgAX81ZKKe&oh=3416539fabc0837bedf8fba6ddb3ef48&oe=5ECE7B13"
+            class="myTextImg"
+          />
+          <div class="myMyText">
+            Hi!
+          </div>
+        </div>
+      </div>
+      <div class="textHolder">
+        <div class="theirText">
+          <div class="theirTheirText">
+            Hey! How are you?
+          </div>
+          <img
+            src="https://instagram.fccu3-1.fna.fbcdn.net/v/t51.2885-19/s320x320/93816637_3160050547352339_7564488790480257024_n.jpg?_nc_ht=instagram.fccu3-1.fna.fbcdn.net&_nc_ohc=QbitMOoV-YgAX81ZKKe&oh=3416539fabc0837bedf8fba6ddb3ef48&oe=5ECE7B13"
+            class="theirTextImg"
+          />
+        </div>
+      </div>
+    </div>
     <div class="footer">
       <input type="text" class="textField" placeholder="Message..." />
       <button class="sendBtn" onclick="sendTxt();">
@@ -473,10 +493,11 @@
       firebase.initializeApp(firebaseConfig);
     </script>
     <script>
+      var lastTexts = [];
       var ID = "";
       setInterval(() => {
         document.querySelector(".messageBody").style.height =
-          window.innerHeight / 16.00020157734 - 8 + "pc";
+          window.innerHeight / 16.00020157734 - 12 + "pc";
         if (document.querySelector(".textField").value.trim() != "")
           document.querySelector(".sendBtn").style.filter = "opacity(1)";
         else document.querySelector(".sendBtn").style.filter = "opacity(0)";
@@ -525,9 +546,13 @@
             firebaseref
               .child("users")
               .child(ID)
-              .set(document.querySelector(".inputUserName").value.trim());
-            document.querySelector(".userNameShow").innerHTML =
-              "Hi, " + document.querySelector(".inputUserName").value;
+              .set({
+                name: document.querySelector(".inputUserName").value.trim(),
+                connectionStatus: "online",
+              });
+            document.querySelector(
+              ".userNameShow"
+            ).innerHTML = document.querySelector(".inputUserName").value;
             document.querySelector(".proPic").src =
               "https://api.sololearn.com/Uploads/Avatars/" + ID + ".jpg";
             document.querySelector(".joiningPage").style.filter = "opacity(0)";
@@ -551,20 +576,37 @@
               '<div class="chat" onclick=openChatWindow("' +
               i +
               '","' +
-              data[i] +
+              data[i].name +
+              '","' +
+              data[i].connectionStatus +
               '")><img src="https://api.sololearn.com/Uploads/Avatars/' +
               i +
               '.jpg" class="chatProPic"/><h2 class="chatName">' +
-              data[i] +
+              data[i].name +
               "</h2></div>";
         }
       }
       var theirID = "",
         textUpdateInterval;
       var IDs = "";
-      function openChatWindow(opponentID, opponentName) {
+      function openChatWindow(
+        opponentID,
+        opponentName,
+        opponentConnectionStatus
+      ) {
         console.log(opponentName + ":" + opponentID);
         theirID = opponentID;
+        if (opponentConnectionStatus == "online") {
+          document.querySelector(".profileImgContainer").style.border =
+            "4px solid rgb(8, 255, 131)";
+          document.querySelector(".profileImgContainer").style.boxShadow =
+            "0 0 10px rgb(8, 255, 131)";
+        } else {
+          document.querySelector(".profileImgContainer").style.border =
+            "4px solid tomato";
+          document.querySelector(".profileImgContainer").style.boxShadow =
+            "0 0 10px tomato";
+        }
         document.querySelector(".name").innerHTML = opponentName;
         document.querySelector(".profileImg").src =
           "https://api.sololearn.com/Uploads/Avatars/" + opponentID + ".jpg";
@@ -594,18 +636,22 @@
       }
       function callback(response) {
         console.log(response);
-        document.querySelector(".messageBody").innerHTML = "<br><br><br>";
+        document.querySelector(".messageBody").innerHTML = "<br>";
         for (var i in response) {
           if (response[i].id == ID)
             document.querySelector(".messageBody").innerHTML +=
-              "<div class='textHolder'><div class='myText'>" +
+              "<div class='textHolder'><div class='myText'><img src='https://api.sololearn.com/Uploads/Avatars/" +
+              ID +
+              ".jpg' class='myTextImg'><div class='myMyText'>" +
               response[i].text +
-              "</div><div class='triangleMT'></div></div>";
+              "</div></div></div>";
           else
             document.querySelector(".messageBody").innerHTML +=
-              "<div class='textHolder'><div class='theirText'>" +
+              "<div class='textHolder'><div class='theirText'><div class='theirTheirText'>" +
               response[i].text +
-              "</div><div class='triangleTT'></div></div>";
+              "</div><img class='theirTextImg' src='https://api.sololearn.com/Uploads/Avatars/" +
+              theirID +
+              ".jpg'></div></div>";
         }
       }
       function backToHome() {
@@ -613,6 +659,24 @@
         document.querySelector(".homePage").style.filter = "opacity(1)";
         clearInterval(textUpdateInterval);
       }
+      var isOnline = false;
+      document.querySelector(".proPic").addEventListener("click", function () {
+        if (isOnline) {
+          firebase
+            .database()
+            .ref("users/" + ID + "/connectionStatus")
+            .set("offline");
+          isOnline = false;
+          this.style.border = "4px solid tomato";
+        } else {
+          firebase
+            .database()
+            .ref("users/" + ID + "/connectionStatus")
+            .set("online");
+          this.style.border = "4px solid rgb(8, 255, 131)";
+          isOnline = true;
+        }
+      });
     </script>
   </body>
 </html>
