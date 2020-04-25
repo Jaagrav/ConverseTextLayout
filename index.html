@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
+    <meta name="theme-color" content="#000000" />
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Converse</title>
@@ -29,6 +30,7 @@
         justify-content: flex-end;
         overflow-x: hidden;
         overflow-y: auto;
+        top: -5pc;
       }
       .textHolder {
         position: relative;
@@ -38,7 +40,7 @@
         left: 0;
         height: fit-content;
         color: white;
-        padding-bottom: 10px;
+        padding-bottom: 18px;
         display: inline-flex;
         font-family: "Baloo Thambi 2", cursive;
       }
@@ -47,8 +49,8 @@
         height: fit-content;
         width: fit-content;
         max-width: 15pc;
-        min-width: 5pc;
-        padding: 15px;
+        min-width: 6pc;
+        padding: 8px;
         background: rgb(233, 233, 233);
         display: inline-flex;
         margin-left: auto;
@@ -56,14 +58,15 @@
         z-index: -5;
         border-radius: 35px 0 0 35px;
         color: black;
+        word-wrap: break-word;
       }
       .theirText {
         position: relative;
         height: fit-content;
         width: fit-content;
         max-width: 15pc;
-        min-width: 5pc;
-        padding: 15px;
+        min-width: 6pc;
+        padding: 8px;
         z-index: -5;
         background: linear-gradient(
           35deg,
@@ -74,7 +77,7 @@
         display: inline-flex;
         margin-right: auto;
         left: 0;
-        min-width: 5pc;
+        word-wrap: break-word;
         color: rgb(255, 255, 255);
         border-radius: 0 35px 35px 0;
       }
@@ -84,19 +87,25 @@
         width: fit-content;
         margin-left: auto;
         right: 0;
+        max-width: 11pc;
+        word-break: break-word;
+        word-wrap: break-word;
         margin: auto;
       }
       .theirTheirText {
         position: relative;
         height: 100%;
+        max-width: 11pc;
         width: fit-content;
         margin-right: auto;
+        word-break: break-word;
         left: 0;
+        word-wrap: break-word;
         margin: auto;
       }
       .myTextImg {
         position: relative;
-        height: 45px;
+        height: 50px;
         border-radius: 50%;
         margin-right: 10px;
         margin-top: auto;
@@ -104,15 +113,38 @@
       }
       .theirTextImg {
         position: relative;
-        height: 45px;
+        height: 50px;
         border-radius: 50%;
         margin-left: 10px;
         margin-top: auto;
         bottom: 0;
       }
+      .myTimeStamp {
+        position: absolute;
+        height: fit-content;
+        width: fit-content;
+        color: white;
+        font-size: 15px;
+        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+          Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+        bottom: 0;
+        right: 3px;
+      }
+
+      .theirTimeStamp {
+        position: absolute;
+        height: fit-content;
+        width: fit-content;
+        font-size: 15px;
+        color: white;
+        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+          Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+        bottom: 0;
+        left: 3px;
+      }
       .header {
         position: relative;
-        height: 6pc;
+        height: 10pc;
         width: 100%;
         background: transparent;
         margin: auto;
@@ -139,8 +171,7 @@
         filter: invert(1);
         margin: auto;
         left: 15px;
-        top: 0;
-        bottom: 0;
+        top: 30px;
       }
       .profileImgContainer {
         position: relative;
@@ -153,6 +184,7 @@
         overflow: hidden;
         border: 4px solid rgb(8, 255, 131);
         box-shadow: 0 0 10px rgb(8, 255, 131);
+        transition: 0.5s;
       }
       .profileImg {
         position: absolute;
@@ -314,6 +346,7 @@
         width: 100%;
         background: url("https://source.unsplash.com/400x400/?colorful bokeh");
         border-radius: 0 0 50px 50px;
+        background-size: cover;
       }
       .userNameShow {
         position: absolute;
@@ -390,9 +423,20 @@
         color: white;
         font-family: "Baloo Thambi 2", cursive;
       }
+      .headerColor {
+        position: absolute;
+        height: 9pc;
+        width: 100%;
+        margin: auto;
+        top: 0;
+        right: 0;
+        left: 0;
+        background: linear-gradient(black, rgb(0, 0, 36), transparent);
+      }
     </style>
   </head>
   <body>
+    <div class="headerColor"></div>
     <div class="joiningPage">
       <h1 class="appName">Converse</h1>
       <form class="joinForm">
@@ -451,6 +495,7 @@
       </div>
     </div>
     <div class="messageBody">
+      <br /><br />
       <div class="textHolder">
         <div class="myText">
           <img
@@ -461,6 +506,7 @@
             Hi!
           </div>
         </div>
+        <div class="myTimeStamp">10:57</div>
       </div>
       <div class="textHolder">
         <div class="theirText">
@@ -497,7 +543,7 @@
       var ID = "";
       setInterval(() => {
         document.querySelector(".messageBody").style.height =
-          window.innerHeight / 16.00020157734 - 12 + "pc";
+          window.innerHeight / 16.00020157734 - 10 + "pc";
         if (document.querySelector(".textField").value.trim() != "")
           document.querySelector(".sendBtn").style.filter = "opacity(1)";
         else document.querySelector(".sendBtn").style.filter = "opacity(0)";
@@ -543,6 +589,10 @@
             }
 
             console.log(ID);
+            $.getJSON(
+              "https://converse-dd75d.firebaseio.com/users/" + ID + ".json",
+              checkConnection
+            );
             firebaseref
               .child("users")
               .child(ID)
@@ -594,7 +644,6 @@
         opponentName,
         opponentConnectionStatus
       ) {
-        console.log(opponentName + ":" + opponentID);
         theirID = opponentID;
         if (opponentConnectionStatus == "online") {
           document.querySelector(".profileImgContainer").style.border =
@@ -620,38 +669,90 @@
             "https://converse-dd75d.firebaseio.com/texts/" + IDs + ".json",
             callback
           );
-          console.log(IDs);
         }, 500);
       }
       function sendTxt() {
-        var firebaseref = firebase.database().ref();
-        firebaseref
-          .child("texts")
-          .child(IDs)
-          .push({
-            id: ID,
-            text: document.querySelector(".textField").value.trim(),
-          });
-        document.querySelector(".textField").value = "";
+        if (document.querySelector(".textField").value.trim() != "") {
+          var firebaseref = firebase.database().ref();
+          firebaseref
+            .child("texts")
+            .child(IDs)
+            .push({
+              id: ID,
+              text: document.querySelector(".textField").value.trim(),
+              timeStamp: new Date().getHours() + ":" + new Date().getMinutes(),
+            });
+          document.querySelector(".textField").value = "";
+        }
       }
+      document
+        .querySelector(".textField")
+        .addEventListener("keypress", function (e) {
+          if (e.key === "Enter") {
+            if (document.querySelector(".textField").value.trim() != "") {
+              var firebaseref = firebase.database().ref();
+              firebaseref
+                .child("texts")
+                .child(IDs)
+                .push({
+                  id: ID,
+                  text: document.querySelector(".textField").value.trim(),
+                  timeStamp:
+                    new Date().getHours() + ":" + new Date().getMinutes(),
+                });
+              document.querySelector(".textField").value = "";
+            }
+          }
+        });
+      var pastLength = 0;
       function callback(response) {
-        console.log(response);
-        document.querySelector(".messageBody").innerHTML = "<br>";
+        var presentLength = 0;
+        document.querySelector(".messageBody").innerHTML = "<br><br>";
         for (var i in response) {
           if (response[i].id == ID)
             document.querySelector(".messageBody").innerHTML +=
-              "<div class='textHolder'><div class='myText'><img src='https://api.sololearn.com/Uploads/Avatars/" +
+              "<div class='textHolder' onclick=deleteMsg('" +
+              i +
+              "')><div class='myText' ><img src='https://api.sololearn.com/Uploads/Avatars/" +
               ID +
               ".jpg' class='myTextImg'><div class='myMyText'>" +
-              response[i].text +
-              "</div></div></div>";
+              response[i].text.replace(/</g, "&lt;").replace(/>/g, "&gt;") +
+              "</div></div><div class='myTimeStamp'>" +
+              response[i].timeStamp +
+              "</div></div>";
           else
             document.querySelector(".messageBody").innerHTML +=
               "<div class='textHolder'><div class='theirText'><div class='theirTheirText'>" +
-              response[i].text +
+              response[i].text.replace(/</g, "&lt;").replace(/>/g, "&gt;") +
               "</div><img class='theirTextImg' src='https://api.sololearn.com/Uploads/Avatars/" +
               theirID +
-              ".jpg'></div></div>";
+              ".jpg'></div><div class='theirTimeStamp'>" +
+              response[i].timeStamp +
+              "</div></div>";
+          presentLength++;
+        }
+        if (presentLength != pastLength) {
+          pastLength = presentLength;
+          document
+            .querySelector(".messageBody")
+            .scrollTo(0, document.querySelector(".messageBody").scrollHeight);
+        }
+        $.getJSON(
+          "https://converse-dd75d.firebaseio.com/users/" + theirID + ".json",
+          setTheirConnection
+        );
+      }
+      function setTheirConnection(data) {
+        if (data.connectionStatus == "online") {
+          document.querySelector(".profileImgContainer").style.border =
+            "4px solid rgb(8, 255, 131)";
+          document.querySelector(".profileImgContainer").style.boxShadow =
+            "0 0 10px rgb(8, 255, 131)";
+        } else {
+          document.querySelector(".profileImgContainer").style.border =
+            "4px solid tomato";
+          document.querySelector(".profileImgContainer").style.boxShadow =
+            "0 0 10px tomato";
         }
       }
       function backToHome() {
@@ -660,23 +761,40 @@
         clearInterval(textUpdateInterval);
       }
       var isOnline = false;
-      document.querySelector(".proPic").addEventListener("click", function () {
+      window.onload = function () {};
+      function checkConnection(data) {
+        if (data.connectionStatus == "offline") {
+          isOnline = true;
+        } else {
+          isOnline = false;
+        }
+        connect();
+      }
+      document.querySelector(".proPic").addEventListener("click", connect);
+      function connect() {
         if (isOnline) {
           firebase
             .database()
             .ref("users/" + ID + "/connectionStatus")
             .set("offline");
           isOnline = false;
-          this.style.border = "4px solid tomato";
+          document.querySelector(".proPic").style.border = "4px solid tomato";
         } else {
           firebase
             .database()
             .ref("users/" + ID + "/connectionStatus")
             .set("online");
-          this.style.border = "4px solid rgb(8, 255, 131)";
+          document.querySelector(".proPic").style.border =
+            "4px solid rgb(8, 255, 131)";
           isOnline = true;
         }
-      });
+      }
+      function deleteMsg(index) {
+        console.log(index);
+        var firebaseref = firebase.database().ref("texts/" + IDs + "/" + index);
+        if (confirm("Do you really want to unsend the message?"))
+          firebaseref.remove();
+      }
     </script>
   </body>
 </html>
