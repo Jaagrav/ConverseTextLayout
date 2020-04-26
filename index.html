@@ -30,7 +30,7 @@
         justify-content: flex-end;
         overflow-x: hidden;
         overflow-y: auto;
-        top: -5pc;
+        top: -8pc;
       }
       .textHolder {
         position: relative;
@@ -423,7 +423,16 @@
         color: white;
         font-family: "Baloo Thambi 2", cursive;
       }
-      
+      .headerColor {
+        position: absolute;
+        height: 9pc;
+        width: 100%;
+        margin: auto;
+        top: 0;
+        right: 0;
+        left: 0;
+        background: linear-gradient(black, rgb(0, 0, 36), transparent);
+      }
     </style>
   </head>
   <body>
@@ -534,7 +543,7 @@
       var ID = "";
       setInterval(() => {
         document.querySelector(".messageBody").style.height =
-          window.innerHeight / 16.00020157734 - 10 + "pc";
+          window.innerHeight / 16.00020157734 - 7 + "pc";
         if (document.querySelector(".textField").value.trim() != "")
           document.querySelector(".sendBtn").style.filter = "opacity(1)";
         else document.querySelector(".sendBtn").style.filter = "opacity(0)";
@@ -622,7 +631,7 @@
               data[i].connectionStatus +
               '")><img src="https://api.sololearn.com/Uploads/Avatars/' +
               i +
-              '.jpg" class="chatProPic"/><h2 class="chatName">' +go
+              '.jpg" class="chatProPic"/><h2 class="chatName">' +
               data[i].name +
               "</h2></div>";
         }
@@ -698,7 +707,7 @@
       var pastLength = 0;
       function callback(response) {
         var presentLength = 0;
-        document.querySelector(".messageBody").innerHTML = "<br><br>";
+        document.querySelector(".messageBody").innerHTML = "<br><br><br><br>";
         for (var i in response) {
           if (response[i].id == ID)
             document.querySelector(".messageBody").innerHTML +=
