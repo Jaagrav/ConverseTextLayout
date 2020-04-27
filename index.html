@@ -9,7 +9,7 @@
     <!--https://source.unsplash.com/1000x2000/?colorful bokeh-->
     <style>
       @import url("https://fonts.googleapis.com/css2?family=Baloo+Thambi+2&display=swap");
-      @import url("https://fonts.googleapis.com/css2?family=Montserrat&display=swap");
+      @import url("https://fonts.googleapis.com/css2?family=Spartan&family=Montserrat&display=swap");
       @import url("https://fonts.googleapis.com/css2?family=Baloo+Thambi+2&display=swap");
       body {
         padding: 0;
@@ -17,7 +17,6 @@
         background: url("https://images.unsplash.com/photo-1518123877527-f4255b0c7795?crop=entropy&cs=tinysrgb&fit=crop&fm=jpg&h=2000&ixid=eyJhcHBfaWQiOjF9&ixlib=rb-1.2.1&q=80&w=1000");
         background-repeat: no-repeat;
         background-position: center;
-        overflow:hidden;
       }
 
       .messageBody {
@@ -31,7 +30,7 @@
         justify-content: flex-end;
         overflow-x: hidden;
         overflow-y: auto;
-        top: -8pc;
+        top: -3pc;
       }
       .textHolder {
         position: relative;
@@ -41,7 +40,7 @@
         left: 0;
         height: fit-content;
         color: white;
-        padding-bottom: 25px;
+        padding-bottom: 18px;
         display: inline-flex;
         font-family: "Baloo Thambi 2", cursive;
       }
@@ -49,7 +48,7 @@
         position: relative;
         height: fit-content;
         width: fit-content;
-        max-width: 15pc;
+        max-width: 13pc;
         min-width: 6pc;
         padding: 8px;
         background: rgb(233, 233, 233);
@@ -65,7 +64,7 @@
         position: relative;
         height: fit-content;
         width: fit-content;
-        max-width: 15pc;
+        max-width: 13pc;
         min-width: 6pc;
         padding: 8px;
         z-index: -5;
@@ -88,7 +87,7 @@
         width: fit-content;
         margin-left: auto;
         right: 0;
-        max-width: 11pc;
+        max-width: 9pc;
         word-break: break-word;
         word-wrap: break-word;
         margin: auto;
@@ -96,7 +95,7 @@
       .theirTheirText {
         position: relative;
         height: 100%;
-        max-width: 11pc;
+        max-width: 9pc;
         width: fit-content;
         margin-right: auto;
         word-break: break-word;
@@ -109,16 +108,16 @@
         height: 50px;
         border-radius: 50%;
         margin-right: 10px;
-        margin-top: auto;
-        bottom: 0;
+        margin-bottom: auto;
+        top: 0;
       }
       .theirTextImg {
         position: relative;
         height: 50px;
         border-radius: 50%;
         margin-left: 10px;
-        margin-top: auto;
-        bottom: 0px;
+        margin-bottom: auto;
+        top: 0;
       }
       .myTimeStamp {
         position: absolute;
@@ -128,9 +127,8 @@
         font-size: 15px;
         font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
           Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
-bottom:1.5px;
+        bottom: 0;
         right: 3px;
-z-index:-1;
       }
 
       .theirTimeStamp {
@@ -141,13 +139,12 @@ z-index:-1;
         color: white;
         font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
           Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
-bottom:1.5px;
+        bottom: 0;
         left: 3px;
-        z-index:-1;
       }
       .header {
         position: relative;
-        height: 10pc;
+        height: 5pc;
         width: 100%;
         background: transparent;
         margin: auto;
@@ -175,7 +172,7 @@ bottom:1.5px;
         margin: auto;
         left: 15px;
         top: 30px;
-        z-index:+1;
+        z-index: +3;
       }
       .profileImgContainer {
         position: relative;
@@ -340,16 +337,16 @@ bottom:1.5px;
         left: 0;
         bottom: 0;
         background: #111;
-        z-index: +3;
         transition: 1s;
+        z-index: +4;
       }
       .myProfileShow {
         position: relative;
         margin: auto 0;
-        height: 15pc;
+        height: 6.5pc;
         width: 100%;
-        background: url("https://source.unsplash.com/400x400/?colorful bokeh");
-        border-radius: 0 0 50px 50px;
+        background: url("https://source.unsplash.com/400x400/?dark");
+        border-radius: 0 0 50px 0;
         background-size: cover;
       }
       .userNameShow {
@@ -357,22 +354,22 @@ bottom:1.5px;
         height: fit-content;
         width: fit-content;
         margin: auto;
-        right: 0;
-        bottom: 10px;
-        left: 0;
+        top: 0;
+        bottom: 0;
+        left: 20px;
         color: white;
-        font-size: 60px;
-        font-family: "Baloo Thambi 2", cursive;
+        font-size: 50px;
+        font-family: "Spartan", sans-serif;
         line-height: 55px;
       }
       .proPic {
         position: absolute;
-        height: 150px;
+        height: 60px;
         margin: auto;
-        top: 20px;
+        top: 0;
+        bottom: 0;
         border-radius: 50%;
-        right: 0;
-        left: 0;
+        right: 20px;
       }
       .chats {
         position: relative;
@@ -397,7 +394,7 @@ bottom:1.5px;
       }
       .chat {
         position: relative;
-        height: 120px;
+        height: 80px;
         width: 90%;
         margin: auto;
         right: 0;
@@ -408,7 +405,7 @@ bottom:1.5px;
       }
       .chatProPic {
         position: absolute;
-        height: 90px;
+        height: 60px;
         margin: auto;
         top: 0;
         bottom: 0;
@@ -437,9 +434,105 @@ bottom:1.5px;
         left: 0;
         background: linear-gradient(black, rgb(0, 0, 36), transparent);
       }
+      .theirProfile {
+        position: absolute;
+        height: 100%;
+        width: 100%;
+        margin: auto;
+        top: 0;
+        right: 0;
+        left: 0;
+        bottom: 0;
+        z-index: +4;
+        backdrop-filter: blur(10px);
+        overflow: hidden;
+        transition: 0.5s;
+        z-index: -3;
+        opacity: 0;
+      }
+      .theirProfileContainer {
+        position: absolute;
+        height: 30%;
+        width: 100%;
+        margin: auto;
+        bottom: 0;
+        right: 0;
+        left: 0;
+        border-radius: 20px 20px 0 0;
+        background: #111;
+        transition: 0.5s;
+        transform: translateY(150%);
+      }
+      .theirProfileContainerPictureContainer {
+        position: absolute;
+        height: 120px;
+        width: 120px;
+        margin: auto;
+        right: 0;
+        left: 0;
+        top: -70px;
+        background: #111;
+        border-radius: 50%;
+        transition: 0.5s;
+        border: 4px solid tomato;
+        box-shadow: 0 0 10px tomato;
+      }
+      .theirProfileContainerPicture {
+        position: absolute;
+        height: 90%;
+        margin: auto;
+        right: 0;
+        top: 0;
+        bottom: 0;
+        left: 0;
+        border-radius: 50%;
+      }
+      .theirProfileContainerName {
+        height: fit-content;
+        width: fit-content;
+        position: absolute;
+        color: white;
+        font-family: "Baloo Thambi 2", cursive;
+        margin: auto;
+        right: 0;
+        left: 0;
+        font-size: 45px;
+        bottom: 47%;
+      }
+      .exitTheirProfileContainer {
+        position: absolute;
+        height: 50px;
+        filter: invert(1);
+        margin: auto;
+        right: 0;
+        left: 0;
+        top: -60%;
+      }
+      .sendRoboticText {
+        position: absolute;
+        height: 50px;
+        width: 80%;
+        padding: 20px;
+        margin: auto;
+        bottom: 35px;
+        word-wrap: break-word;
+        left: 0;
+        right: 0;
+        outline: none;
+        color: white;
+        background: transparent;
+        text-align: center;
+        border: 0;
+        border-radius: 50px;
+        font-size: 25px;
+        font-family: "Baloo Thambi 2", cursive;
+        resize: none;
+        line-height: 20px;
+      }
     </style>
   </head>
   <body>
+    <audio src="" class="roboticVoice"></audio>
     <div class="headerColor"></div>
     <div class="joiningPage">
       <h1 class="appName">Converse</h1>
@@ -463,7 +556,7 @@ bottom:1.5px;
     </div>
     <div class="homePage">
       <div class="myProfileShow">
-        <h1 class="userNameShow">Jaagrav</h1>
+        <h1 class="userNameShow">Verse</h1>
         <img
           src="https://instagram.fccu3-1.fna.fbcdn.net/v/t51.2885-19/s320x320/93816637_3160050547352339_7564488790480257024_n.jpg?_nc_ht=instagram.fccu3-1.fna.fbcdn.net&_nc_ohc=QbitMOoV-YgAX81ZKKe&oh=3416539fabc0837bedf8fba6ddb3ef48&oe=5ECE7B13"
           class="proPic"
@@ -489,10 +582,12 @@ bottom:1.5px;
             src="https://cdn.onlinewebfonts.com/svg/img_414032.png"
           />
         </button>
-        <div class="profileImgContainer">
+        <div class="profileImgContainer" onclick="openTheirProfile()">
           <img
             src="https://source.unsplash.com/50x50/?flowers,nature,people"
             class="profileImg"
+            style="z-index: 2;"
+            onclick="openTheirProfile()"
           />
         </div>
         <div class="name">Parth Saini</div>
@@ -522,6 +617,29 @@ bottom:1.5px;
             class="theirTextImg"
           />
         </div>
+      </div>
+    </div>
+    <div class="theirProfile">
+      <div class="theirProfileContainer">
+        <img
+          src="https://cdn1.iconfinder.com/data/icons/lightly-selected/30/close-480.png"
+          class="exitTheirProfileContainer"
+          onclick="closeTheirProfile()"
+        />
+        <div class="theirProfileContainerPictureContainer">
+          <img
+            src="https://source.unsplash.com/50x50/?flowers,nature,people"
+            class="theirProfileContainerPicture"
+          />
+        </div>
+        <textarea
+          type="text"
+          placeholder="No status set"
+          class="sendRoboticText"
+          onclick="sendRoboticText()"
+          readonly
+        ></textarea>
+        <h1 class="theirProfileContainerName">Jaagrav</h1>
       </div>
     </div>
     <div class="footer">
@@ -554,7 +672,7 @@ bottom:1.5px;
         document.querySelector(".textField").style.width =
           screen.width / 16.00020157734 - 7 + "pc";
         document.querySelector(".chats").style.height =
-          window.innerHeight / 16.00020157734 - 15 + "pc";
+          window.innerHeight / 16.00020157734 - 6.5 + "pc";
       }, 50);
       document
         .querySelector(".submitBtn")
@@ -603,10 +721,8 @@ bottom:1.5px;
               .set({
                 name: document.querySelector(".inputUserName").value.trim(),
                 connectionStatus: "online",
+                status: "Conversing with people on Verse!",
               });
-            document.querySelector(
-              ".userNameShow"
-            ).innerHTML = document.querySelector(".inputUserName").value;
             document.querySelector(".proPic").src =
               "https://api.sololearn.com/Uploads/Avatars/" + ID + ".jpg";
             document.querySelector(".joiningPage").style.filter = "opacity(0)";
@@ -625,9 +741,14 @@ bottom:1.5px;
       function updateChats(data) {
         document.querySelector(".chatsContainer").innerHTML = "";
         for (var i in data) {
-          if (i != ID)
+          if (i != ID) {
+            var color = "";
+            if (data[i].connectionStatus == "online")
+              color = "rgb(8, 255, 131)";
+            else color = "tomato";
+            console.log(color);
             document.querySelector(".chatsContainer").innerHTML +=
-              '<div class="chat" onclick=openChatWindow("' +
+              '<div class="chat" onclick=openChatWindow("bitch","' +
               i +
               '","' +
               data[i].name +
@@ -635,38 +756,63 @@ bottom:1.5px;
               data[i].connectionStatus +
               '")><img src="https://api.sololearn.com/Uploads/Avatars/' +
               i +
-              '.jpg" class="chatProPic"/><h2 class="chatName">' +
+              '.jpg" class="chatProPic" style="border:4px solid ' +
+              color +
+              ';"/><h2 class="chatName">' +
               data[i].name +
               "</h2></div>";
+          }
         }
       }
       var theirID = "",
         textUpdateInterval;
       var IDs = "";
       function openChatWindow(
+        status,
         opponentID,
         opponentName,
         opponentConnectionStatus
       ) {
+        console.log(status);
         theirID = opponentID;
         if (opponentConnectionStatus == "online") {
           document.querySelector(".profileImgContainer").style.border =
             "4px solid rgb(8, 255, 131)";
           document.querySelector(".profileImgContainer").style.boxShadow =
             "0 0 10px rgb(8, 255, 131)";
+
+          document.querySelector(
+            ".theirProfileContainerPictureContainer"
+          ).style.border = "4px solid rgb(8, 255, 131)";
+          document.querySelector(
+            ".theirProfileContainerPictureContainer"
+          ).style.boxShadow = "0 0 10px rgb(8, 255, 131)";
         } else {
-          document.querySelector(".profileImgContainer").style.border =
-            "4px solid tomato";
-          document.querySelector(".profileImgContainer").style.boxShadow =
-            "0 0 10px tomato";
+          document.querySelector(
+            ".theirProfileContainerPictureContainer"
+          ).style.border = "4px solid tomato";
+          document.querySelector(
+            ".theirProfileContainerPictureContainer"
+          ).style.boxShadow = "0 0 10px tomato";
+          document.querySelector(
+            ".theirProfileContainerPictureContainer"
+          ).style.border = "4px solid tomato";
+          document.querySelector(
+            ".theirProfileContainerPictureContainer"
+          ).style.boxShadow = "0 0 10px tomato";
         }
         document.querySelector(".name").innerHTML = opponentName;
         document.querySelector(".profileImg").src =
           "https://api.sololearn.com/Uploads/Avatars/" + opponentID + ".jpg";
+        document.querySelector(".homePage").style.transform =
+          "translateX(-100%)";
         document.querySelector(".homePage").style.filter = "opacity(0)";
-        setTimeout(() => {
-          document.querySelector(".homePage").style.zIndex = "-2";
-        }, 1000);
+        document.querySelector(".theirProfileContainerPicture").src =
+          "https://api.sololearn.com/Uploads/Avatars/" + opponentID + ".jpg";
+        document.querySelector(
+          ".theirProfileContainerName"
+        ).innerHTML = opponentName;
+
         IDs = parseInt(ID) < parseInt(theirID) ? ID + theirID : theirID + ID;
         textUpdateInterval = setInterval(function () {
           $.getJSON(
@@ -690,6 +836,23 @@ bottom:1.5px;
         }
       }
       document
+        .querySelector(".sendRoboticText")
+        .addEventListener("keypress", function (e) {
+          if (e.key == "Enter") {
+            sendRoboticText();
+          }
+        });
+      function sendRoboticText() {
+        if (document.querySelector(".sendRoboticText").value.trim() != "") {
+          var firebaseref = firebase.database().ref();
+          firebaseref
+            .child("users")
+            .child(IDs)
+            .child("status")
+            .set(document.querySelector(".sendRoboticText").value);
+        }
+      }
+      document
         .querySelector(".textField")
         .addEventListener("keypress", function (e) {
           if (e.key === "Enter") {
@@ -708,6 +871,7 @@ bottom:1.5px;
             }
           }
         });
+
       var pastLength = 0;
       function callback(response) {
         var presentLength = 0;
@@ -733,6 +897,7 @@ bottom:1.5px;
               ".jpg'></div><div class='theirTimeStamp'>" +
               response[i].timeStamp +
               "</div></div>";
+
           presentLength++;
         }
         if (presentLength != pastLength) {
@@ -752,15 +917,27 @@ bottom:1.5px;
             "4px solid rgb(8, 255, 131)";
           document.querySelector(".profileImgContainer").style.boxShadow =
             "0 0 10px rgb(8, 255, 131)";
+          document.querySelector(
+            ".theirProfileContainerPictureContainer"
+          ).style.border = "4px solid rgb(8, 255, 131)";
+          document.querySelector(
+            ".theirProfileContainerPictureContainer"
+          ).style.boxShadow = "0 0 10px rgb(8, 255, 131)";
         } else {
           document.querySelector(".profileImgContainer").style.border =
             "4px solid tomato";
           document.querySelector(".profileImgContainer").style.boxShadow =
             "0 0 10px tomato";
+          document.querySelector(
+            ".theirProfileContainerPictureContainer"
+          ).style.border = "4px solid tomato";
+          document.querySelector(
+            ".theirProfileContainerPictureContainer"
+          ).style.boxShadow = "0 0 10px tomato";
         }
       }
       function backToHome() {
-        document.querySelector(".homePage").style.zIndex = "+6";
+        document.querySelector(".homePage").style.transform = "translateX(0)";
         document.querySelector(".homePage").style.filter = "opacity(1)";
         clearInterval(textUpdateInterval);
       }
@@ -798,6 +975,25 @@ bottom:1.5px;
         var firebaseref = firebase.database().ref("texts/" + IDs + "/" + index);
         if (confirm("Do you really want to unsend the message?"))
           firebaseref.remove();
+      }
+      function openTheirProfile() {
+        document.querySelector(".theirProfile").style.opacity = "1";
+        document.querySelector(".theirProfile").style.zIndex = "3";
+        document.querySelector(".theirProfile").style.backdropFilter =
+          "blur(10px)";
+
+        document.querySelector(".theirProfileContainer").style.transform =
+          "translateY(0)";
+      }
+      function closeTheirProfile() {
+        document.querySelector(".theirProfile").style.backdropFilter =
+          "blur(0)";
+        document.querySelector(".theirProfileContainer").style.transform =
+          "translateY(150%)";
+        setTimeout(() => {
+          document.querySelector(".theirProfile").style.opacity = "0";
+          document.querySelector(".theirProfile").style.zIndex = "-15";
+        }, 500);
       }
     </script>
   </body>
