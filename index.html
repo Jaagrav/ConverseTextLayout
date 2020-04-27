@@ -31,6 +31,7 @@
         overflow-x: hidden;
         overflow-y: auto;
         top: -3pc;
+        scroll-behavior: smooth;
       }
       .textHolder {
         position: relative;
@@ -129,6 +130,7 @@
           Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
         bottom: 0;
         right: 3px;
+        visibility: hidden;
       }
 
       .theirTimeStamp {
@@ -141,6 +143,7 @@
           Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
         bottom: 0;
         left: 3px;
+        visibility: hidden;
       }
       .header {
         position: relative;
@@ -539,7 +542,10 @@
     </style>
   </head>
   <body>
-    <audio src="" class="roboticVoice"></audio>
+    <audio
+      src="https://picturetosound.com/en/download/get/778E92431192B82BE49111FC325BB55BD95A1AE6/MSB"
+      class="roboticVoice"
+    ></audio>
     <div class="headerColor"></div>
     <div class="joiningPage">
       <div class="picture">
@@ -917,6 +923,7 @@
           document
             .querySelector(".messageBody")
             .scrollTo(0, document.querySelector(".messageBody").scrollHeight);
+          document.querySelector(".roboticVoice").play();
         }
         $.getJSON(
           "https://converse-dd75d.firebaseio.com/users/" + theirID + ".json",
