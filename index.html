@@ -56,7 +56,7 @@
         margin-left: auto;
         right: 0;
         z-index: -5;
-        border-radius: 35px 0 0 35px;
+        border-radius: 30px 0 0 30px;
         color: black;
         word-wrap: break-word;
       }
@@ -79,7 +79,7 @@
         left: 0;
         word-wrap: break-word;
         color: rgb(255, 255, 255);
-        border-radius: 0 35px 35px 0;
+        border-radius: 0 30px 30px 0;
       }
       .myMyText {
         position: relative;
@@ -116,8 +116,8 @@
         height: 50px;
         border-radius: 50%;
         margin-left: 10px;
-        margin-bottom: auto;
-        top: 0;
+        margin-top: auto;
+        bottom: 0;
       }
       .myTimeStamp {
         position: absolute;
@@ -268,11 +268,7 @@
         right: 0;
         left: 0;
         bottom: 0;
-        background: linear-gradient(
-          90deg,
-          rgb(91, 155, 250),
-          rgb(122, 27, 212)
-        );
+        background: #111;
         z-index: +5;
         transition: 1s;
       }
@@ -280,52 +276,53 @@
         height: fit-content;
         width: fit-content;
         position: absolute;
-        font-size: 80px;
-        margin: auto;
-        right: 0;
-        left: 0;
-        color: rgb(0, 0, 0);
-        font-family: "Baloo Thambi 2", cursive;
-      }
-      .joinForm {
-        position: absolute;
-        height: 20pc;
-        width: 90%;
+        font-size: 60px;
         margin: auto;
         top: 0;
         right: 0;
         left: 0;
         bottom: 0;
+        text-shadow: 0 0 20px black;
+        color: white;
+        font-family: "Spartan", sans-serif;
+      }
+      .joinForm {
+        position: absolute;
+        height: fit-content;
+        width: 100%;
+        margin: auto;
+        right: 0;
+        left: 0;
+        bottom: 15px;
       }
       .inputUserName,
       .inputUserSLID {
         position: relative;
         height: 20px;
-        width: 80%;
+        width: 70%;
         font-family: "Baloo Thambi 2", cursive;
         margin: auto;
-        right: 0;
-        left: 0;
+        left: 15px;
         padding: 20px;
-        margin-bottom: 30px;
+        margin-top: 15px;
         font-size: 25px;
         border: 0;
-        border-radius: 50px;
+        border-radius: 10px;
         outline: none;
       }
       .submitBtn {
-        position: relative;
-        height: fit-content;
-        width: 100px;
-        margin: auto;
-        font-family: "Baloo Thambi 2", cursive;
-        right: 0;
-        left: 0;
-        background: teal;
-        border: 0;
-        border-radius: 50px;
-        font-size: 50px;
+        position: absolute;
+        background: transparent;
+        height: 30px;
         outline: none;
+        border: none;
+        filter: invert(1);
+        transform: rotate(180deg);
+        margin: auto;
+        right: 25px;
+        top: 0;
+        bottom: 0;
+        z-index: +3;
       }
       .homePage {
         position: absolute;
@@ -529,29 +526,42 @@
         resize: none;
         line-height: 20px;
       }
+      .picture {
+        position: absolute;
+        height: 80%;
+        width: 100%;
+        background: url("https://images.unsplash.com/photo-1517842187497-033b8b8cea1e?crop=entropy&cs=tinysrgb&fit=crop&fm=jpg&h=2000&ixid=eyJhcHBfaWQiOjF9&ixlib=rb-1.2.1&q=80&w=1000");
+        margin: auto;
+        top: 0;
+        right: 0;
+        left: 0;
+      }
     </style>
   </head>
   <body>
     <audio src="" class="roboticVoice"></audio>
     <div class="headerColor"></div>
     <div class="joiningPage">
-      <h1 class="appName">Converse</h1>
+      <div class="picture">
+        <h1 class="appName">Verse</h1>
+      </div>
       <form class="joinForm">
-        <center>
-          <input
-            type="text"
-            class="inputUserName"
-            placeholder="What's your name?"
-            required
-          />
-          <input
-            type="text"
-            class="inputUserSLID"
-            placeholder="Your SoloLearn account link"
-            required
-          />
-          <button class="submitBtn">Go</button>
-        </center>
+        <input
+          type="text"
+          class="inputUserName"
+          placeholder="What's your name?"
+          required
+        />
+        <input
+          type="text"
+          class="inputUserSLID"
+          placeholder="Your SoloLearn account link"
+          required
+        />
+        <img
+          src="https://cdn.onlinewebfonts.com/svg/img_414032.png"
+          class="submitBtn"
+        />
       </form>
     </div>
     <div class="homePage">
@@ -664,6 +674,8 @@
       var lastTexts = [];
       var ID = "";
       setInterval(() => {
+        document.querySelector(".picture").style.height =
+          window.innerHeight / 16.00020157734 - 10.5 + "pc";
         document.querySelector(".messageBody").style.height =
           window.innerHeight / 16.00020157734 - 7 + "pc";
         if (document.querySelector(".textField").value.trim() != "")
