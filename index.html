@@ -310,8 +310,10 @@
         margin-top: 15px;
         font-size: 25px;
         border: 0;
-        border-radius: 10px;
         outline: none;
+        background: transparent;
+        color: white;
+        border-bottom: 2px solid #444;
       }
       .submitBtn {
         position: absolute;
@@ -345,7 +347,7 @@
         margin: auto 0;
         height: 6.5pc;
         width: 100%;
-        background: url("https://source.unsplash.com/400x400/?dark");
+        background: url("https://images.unsplash.com/photo-1478760329108-5c3ed9d495a0?crop=entropy&cs=tinysrgb&fit=crop&fm=jpg&h=400&ixid=eyJhcHBfaWQiOjF9&ixlib=rb-1.2.1&q=80&w=400");
         border-radius: 0 0 50px 0;
         background-size: cover;
       }
@@ -395,13 +397,12 @@
       .chat {
         position: relative;
         height: 80px;
-        width: 90%;
+        width: 100%;
         margin: auto;
         right: 0;
         left: 0;
         border-bottom: 2px solid #333;
         background: #111;
-        margin-bottom: 10px;
       }
       .chatProPic {
         position: absolute;
@@ -519,7 +520,7 @@
         left: 0;
         right: 0;
         outline: none;
-        color: white;
+        color: rgb(100, 100, 100);
         background: transparent;
         text-align: center;
         border: 0;
@@ -527,17 +528,99 @@
         font-size: 25px;
         font-family: "Baloo Thambi 2", cursive;
         resize: none;
-        line-height: 20px;
+        line-height: 25px;
       }
       .picture {
         position: absolute;
         height: 80%;
         width: 100%;
-        background: url("https://images.unsplash.com/photo-1517842187497-033b8b8cea1e?crop=entropy&cs=tinysrgb&fit=crop&fm=jpg&h=2000&ixid=eyJhcHBfaWQiOjF9&ixlib=rb-1.2.1&q=80&w=1000");
+        background: url("https://images.unsplash.com/photo-1543946602-a2327d26e069?crop=entropy&cs=tinysrgb&fit=crop&fm=jpg&h=2000&ixid=eyJhcHBfaWQiOjF9&ixlib=rb-1.2.1&q=80&w=1000");
+        background-size: cover;
         margin: auto;
         top: 0;
         right: 0;
         left: 0;
+      }
+      .editBtn {
+        position: absolute;
+        height: 20px;
+        margin: auto;
+        top: 0;
+        bottom: 0;
+        right: 110px;
+        filter: invert(1);
+      }
+      .editBox {
+        position: absolute;
+        height: 100%;
+        width: 100%;
+        margin: auto;
+        top: 0;
+        right: 0;
+        left: 0;
+        bottom: 0;
+        backdrop-filter: blur(10px);
+        transition: 0.5s;
+        z-index: -10;
+      }
+      .edit {
+        position: absolute;
+        height: 14pc;
+        width: 85%;
+        margin: auto;
+        top: 0;
+        right: 0;
+        transition: 0.5s;
+        left: 0;
+        opacity: 0;
+        bottom: 0;
+        background: rgb(71, 71, 71);
+        border-radius: 15px;
+        font-family: "Baloo Thambi 2", cursive;
+      }
+      .editName,
+      .editStatus {
+        position: absolute;
+        height: 10px;
+        width: 75%;
+        font-size: 20px;
+        background: transparent;
+        outline: none;
+        border: 0;
+        padding: 20px;
+        border-bottom: 2px solid #111;
+        margin: auto;
+        color: white;
+        right: 0;
+        left: 0;
+        top: 15px;
+      }
+      .editStatus {
+        top: 70px;
+      }
+      .updateBtn {
+        position: absolute;
+        height: fit-content;
+        width: fit-content;
+        padding: 10px;
+        font-size: 20px;
+        background: rgb(49, 241, 90);
+        outline: none;
+        border: 0;
+        border-radius: 20px;
+        margin: auto;
+        right: 0;
+        left: 0;
+        top: 145px;
+      }
+      .exitEditBox {
+        position: absolute;
+        height: 30px;
+        filter: invert(1);
+        margin: auto;
+        right: 0;
+        left: 0;
+        top: -50px;
       }
     </style>
   </head>
@@ -573,10 +656,26 @@
     <div class="homePage">
       <div class="myProfileShow">
         <h1 class="userNameShow">Verse</h1>
+
+        <img
+          src="https://cdn0.iconfinder.com/data/icons/essentials-4/1696/pen-512.png"
+          class="editBtn"
+        />
         <img
           src="https://instagram.fccu3-1.fna.fbcdn.net/v/t51.2885-19/s320x320/93816637_3160050547352339_7564488790480257024_n.jpg?_nc_ht=instagram.fccu3-1.fna.fbcdn.net&_nc_ohc=QbitMOoV-YgAX81ZKKe&oh=3416539fabc0837bedf8fba6ddb3ef48&oe=5ECE7B13"
           class="proPic"
         />
+      </div>
+      <div class="editBox">
+        <div class="edit">
+          <img
+            src="https://cdn1.iconfinder.com/data/icons/lightly-selected/30/close-480.png"
+            class="exitEditBox"
+          />
+          <input class="editName" type="text" placeholder="Edit Your Name" />
+          <input type="text" class="editStatus" placeholder="Edit Status" />
+          <button class="updateBtn">Update</button>
+        </div>
       </div>
       <div class="chats">
         <div class="chatsContainer">
@@ -677,6 +776,50 @@
       firebase.initializeApp(firebaseConfig);
     </script>
     <script>
+      document.querySelector(".editBtn").addEventListener("click", function () {
+        document.querySelector(".editBox").style.zIndex = "+10";
+        document.querySelector(".editBox").style.backdropFilter = "blur(10px)";
+        document.querySelector(".edit").style.height = "13pc";
+        document.querySelector(".edit").style.width = "80%";
+        document.querySelector(".edit").style.opacity = "1";
+      });
+      document
+        .querySelector(".exitEditBox")
+        .addEventListener("click", function () {
+          document.querySelector(".edit").style.opacity = "0";
+          setTimeout(() => {
+            document.querySelector(".editBox").style.zIndex = "-20";
+          }, 500);
+          document.querySelector(".editBox").style.backdropFilter = "blur(0)";
+          document.querySelector(".edit").style.height = "14pc";
+          document.querySelector(".edit").style.width = "85%";
+        });
+      document
+        .querySelector(".updateBtn")
+        .addEventListener("click", function () {
+          if (document.querySelector(".editName").value.trim() != 0) {
+            localStorage.setItem(
+              "verse-name",
+              document.querySelector(".editName").value
+            );
+            firebase
+              .database()
+              .ref("users/" + ID + "/name")
+              .set(document.querySelector(".editName").value.trim());
+          }
+          if (document.querySelector(".editStatus").value.trim() != 0) {
+            localStorage.setItem(
+              "verse-status",
+              document.querySelector(".editStatus").value.trim()
+            );
+            firebase
+              .database()
+              .ref("users/" + ID + "/status")
+              .set(document.querySelector(".editStatus").value.trim());
+          }
+          document.querySelector(".editStatus").value = "";
+          document.querySelector(".editName").value = "";
+        });
       var lastTexts = [];
       var ID = "";
       setInterval(() => {
@@ -739,8 +882,13 @@
               .set({
                 name: document.querySelector(".inputUserName").value.trim(),
                 connectionStatus: "online",
-                status: "Conversing with people on Verse!",
+                status: localStorage.getItem("verse-status"),
               });
+            localStorage.setItem(
+              "verse-name",
+              document.querySelector(".inputUserName").value.trim()
+            );
+            localStorage.setItem("verse-id", ID);
             document.querySelector(".proPic").src =
               "https://api.sololearn.com/Uploads/Avatars/" + ID + ".jpg";
             document.querySelector(".joiningPage").style.filter = "opacity(0)";
@@ -764,7 +912,6 @@
             if (data[i].connectionStatus == "online")
               color = "rgb(8, 255, 131)";
             else color = "tomato";
-            console.log(color);
             document.querySelector(".chatsContainer").innerHTML +=
               '<div class="chat" onclick=openChatWindow("bitch","' +
               i +
@@ -781,6 +928,10 @@
               "</h2></div>";
           }
         }
+        document.querySelector(".editName").placeholder =
+          "Edit name:" + data[ID].name;
+        document.querySelector(".editStatus").placeholder =
+          "Edit Status: " + data[ID].status;
       }
       var theirID = "",
         textUpdateInterval;
@@ -791,7 +942,6 @@
         opponentName,
         opponentConnectionStatus
       ) {
-        console.log(status);
         theirID = opponentID;
         if (opponentConnectionStatus == "online") {
           document.querySelector(".profileImgContainer").style.border =
@@ -931,6 +1081,7 @@
         );
       }
       function setTheirConnection(data) {
+        document.querySelector(".sendRoboticText").innerHTML = data.status;
         if (data.connectionStatus == "online") {
           document.querySelector(".profileImgContainer").style.border =
             "4px solid rgb(8, 255, 131)";
@@ -961,7 +1112,14 @@
         clearInterval(textUpdateInterval);
       }
       var isOnline = false;
-      window.onload = function () {};
+      window.onload = function () {
+        document.querySelector(".inputUserName").value = localStorage.getItem(
+          "verse-name"
+        );
+        document.querySelector(".inputUserSLID").value = localStorage.getItem(
+          "verse-id"
+        );
+      };
       function checkConnection(data) {
         if (data.connectionStatus == "offline") {
           isOnline = true;
@@ -990,7 +1148,6 @@
         }
       }
       function deleteMsg(index) {
-        console.log(index);
         var firebaseref = firebase.database().ref("texts/" + IDs + "/" + index);
         if (confirm("Do you really want to unsend the message?"))
           firebaseref.remove();
